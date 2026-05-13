@@ -61,38 +61,62 @@ export function Depoimentos() {
   return (
     <section className="py-24 lg:py-32 bg-[#0a0a0a] relative text-[#f5f5f5] z-10 border-t border-white/5">
       <div className="w-full px-8 md:px-16 lg:px-24 mx-auto max-w-[1600px]">
-        {/* Big Title (Top Left) */}
-        <h1 className="text-[70px] sm:text-[90px] md:text-[110px] lg:text-[140px] leading-none tracking-tighter text-[#222] font-medium mb-16 lg:mb-24 select-none lg:-ml-4 opacity-70">
+        {/* Big Ghost Title - clipPath mask reveal */}
+        <motion.h1
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[70px] sm:text-[90px] md:text-[110px] lg:text-[140px] leading-none tracking-tighter text-[#555] font-medium mb-16 lg:mb-24 select-none lg:-ml-4"
+        >
           Resultados
-        </h1>
+        </motion.h1>
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row items-start mb-16 lg:mb-24 gap-12 lg:gap-16 w-full mt-0 bg-[#0a0a0a] scroll-m-20" id="depoimentos">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="flex flex-col lg:flex-row items-start mb-16 lg:mb-24 gap-12 lg:gap-16 w-full mt-0 bg-[#0a0a0a] scroll-m-20" id="depoimentos"
+        >
           {/* Coluna 1 */}
-          <div className="flex-shrink-0 w-full lg:w-48 lg:border-l border-white/10 lg:pl-6 pt-2">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            className="flex-shrink-0 w-full lg:w-48 lg:border-l border-white/10 lg:pl-6 pt-2"
+          >
              <div className="text-3xl font-light tracking-tight text-white mb-2">003</div>
              <div className="text-white/50 text-[14px] tracking-wide">depoimentos</div>
-          </div>
+          </motion.div>
           
           {/* Coluna 2 */}
-          <div className="flex-grow max-w-[700px] lg:border-l border-white/10 lg:pl-8 pt-2">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            className="flex-grow max-w-[700px] lg:border-l border-white/10 lg:pl-8 pt-2"
+          >
              <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tighter font-medium text-[#eaeaea]">
                 O que dizem os vendedores<br className="hidden md:block" /> que já usam o Vendas Mais.
              </h2>
-          </div>
+          </motion.div>
           
           {/* Coluna 3 */}
-          <div className="lg:w-72 shrink-0 lg:border-l border-white/10 lg:pl-8 pt-2 self-start mt-8 lg:mt-0">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            className="lg:w-72 shrink-0 lg:border-l border-white/10 lg:pl-8 pt-2 self-start mt-8 lg:mt-0"
+          >
             <p className="text-[#8b98a5] text-[15px] leading-relaxed">
                Resultados reais de vendedores como você.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 lg:h-[600px] rounded-2xl overflow-hidden bg-white/5 border border-white/5">
           {/* Box 1: Image (Left Column) */}
-          <div className="lg:col-span-4 bg-[#141414] relative h-[400px] lg:h-full overflow-hidden">
+          <div className="lg:col-span-3 bg-[#141414] relative h-[400px] lg:h-full overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeTestimonial.id}
@@ -114,7 +138,7 @@ export function Depoimentos() {
           </div>
 
           {/* Right Columns Wrapper */}
-          <div className="lg:col-span-8 flex flex-col gap-1">
+          <div className="lg:col-span-9 flex flex-col gap-1">
             
             {/* Top Row */}
             <div className="flex flex-col md:flex-row gap-1 h-auto md:h-24 shrink-0">

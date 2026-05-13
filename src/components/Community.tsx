@@ -8,40 +8,64 @@ export function Community() {
       id="comunidade"
     >
       <div className="w-full px-8 md:px-16 lg:px-24 mx-auto max-w-[1600px] relative z-10">
-        {/* Big Title (Top Left) */}
-        <h1 className="text-[70px] sm:text-[90px] md:text-[110px] lg:text-[140px] leading-none tracking-tighter text-[#222] font-medium mb-16 lg:mb-24 select-none lg:-ml-4 opacity-70">
+        {/* Big Ghost Title - clipPath mask reveal */}
+        <motion.h1
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[70px] sm:text-[90px] md:text-[110px] lg:text-[140px] leading-none tracking-tighter text-[#555] font-medium mb-16 lg:mb-24 select-none lg:-ml-4"
+        >
           Comunidade
-        </h1>
+        </motion.h1>
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row items-start mb-16 lg:mb-24 gap-12 lg:gap-16 w-full mt-0 bg-[#0a0a0a]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12 } }
+          }}
+          className="flex flex-col lg:flex-row items-start mb-16 lg:mb-24 gap-12 lg:gap-16 w-full mt-0 bg-[#0a0a0a]"
+        >
           {/* Coluna 1 */}
-          <div className="flex-shrink-0 w-full lg:w-48 lg:border-l border-white/10 lg:pl-6 pt-2">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            className="flex-shrink-0 w-full lg:w-48 lg:border-l border-white/10 lg:pl-6 pt-2"
+          >
             <div className="text-3xl font-light tracking-tight text-white mb-2">
               005
             </div>
             <div className="text-white/50 text-[14px] tracking-wide uppercase">
               comunidade
             </div>
-          </div>
+          </motion.div>
 
           {/* Coluna 2 */}
-          <div className="flex-grow max-w-[700px] lg:border-l border-white/10 lg:pl-8 pt-2">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            className="flex-grow max-w-[700px] lg:border-l border-white/10 lg:pl-8 pt-2"
+          >
             <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tighter font-medium text-[#eaeaea]">
               Entre para o grupo de vendedores
               <br className="hidden lg:block" /> que estão um passo à frente.
             </h2>
-          </div>
+          </motion.div>
 
           {/* Coluna 3 */}
-          <div className="lg:w-72 shrink-0 lg:border-l border-white/10 lg:pl-8 pt-2 self-start mt-8 lg:mt-0">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            className="lg:w-72 shrink-0 lg:border-l border-white/10 lg:pl-8 pt-2 self-start mt-8 lg:mt-0"
+          >
             <p className="text-[#8b98a5] text-[15px] leading-relaxed">
               Acesso gratuito.
               <br />
               Sai quando quiser.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Bento Community Display */}
         <motion.div 

@@ -16,14 +16,13 @@ import { Footer } from './components/Footer';
 export default function App() {
   return (
     <div className="min-h-screen bg-[#030712]">
-      <Navbar />
-      <Hero />
-      <Features />
-      <Diferenciais />
-      <Depoimentos />
-      <Pricing />
-      <Community />
-      <Evolution />
+      <div id="home"><Navbar /><Hero /></div>
+      <div id="features"><Features /></div>
+      <div id="diferenciais"><Diferenciais /></div>
+      <div id="depoimentos"><Depoimentos /></div>
+      <div id="precos"><Pricing /></div>
+      <div id="comunidade"><Community /></div>
+      <div id="evolution"><Evolution /></div>
       <Footer />
     </div>
   );

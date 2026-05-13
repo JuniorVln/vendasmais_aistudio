@@ -11,13 +11,13 @@ const columns = [
     activeColor: "#2563eb", // blue-600
     theme: "blue",
     visual: "image",
-    img: "https://images.unsplash.com/photo-1620712948343-0056901f4361?auto=format&fit=crop&q=80"
+    img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 2,
     title: "Feito para Vendedores, não para TI.",
     desc: "Interface pensada para quem bate meta, não para quem configura sistema. Zero curva de aprendizado.",
-    img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800",
     label: "experiência",
     activeColor: "#F5A520", // gold
     theme: "orange",
@@ -31,7 +31,7 @@ const columns = [
     activeColor: "#059669", // emerald-600
     theme: "emerald",
     visual: "image",
-    img: "https://images.unsplash.com/photo-1614680376593-902f74a936c7?auto=format&fit=crop&q=80"
+    img: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=800"
   },
 ];
 
@@ -41,33 +41,54 @@ export function Diferenciais() {
   return (
     <section className="py-24 lg:py-32 bg-[#0a0a0a] relative text-[#f5f5f5] z-10 border-t border-white/5">
       <div className="w-full px-8 md:px-16 lg:px-24 mx-auto max-w-[1600px]">
-        {/* Big Title (Top Left) */}
-        <h1 className="text-[70px] sm:text-[90px] md:text-[110px] lg:text-[140px] leading-none tracking-tighter text-[#222] font-medium mb-16 lg:mb-24 select-none lg:-ml-4 opacity-70">
+        {/* Big Ghost Title - clipPath mask reveal */}
+        <motion.h1
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[70px] sm:text-[90px] md:text-[110px] lg:text-[140px] leading-none tracking-tighter text-[#555] font-medium mb-16 lg:mb-24 select-none lg:-ml-4"
+        >
           A Diferença
-        </h1>
+        </motion.h1>
 
-        {/* Header da Seção */}
-        <div className="flex flex-col lg:flex-row items-start mb-16 lg:mb-24 gap-12 lg:gap-16 w-full">
+        {/* Header da Seção — staggered entrance */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+          className="flex flex-col lg:flex-row items-start mb-16 lg:mb-24 gap-12 lg:gap-16 w-full"
+        >
           {/* Coluna 1 */}
-          <div className="flex-shrink-0 w-full lg:w-48 lg:border-l border-white/10 lg:pl-6 pt-2">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16,1,0.3,1] } } }}
+            className="flex-shrink-0 w-full lg:w-48 lg:border-l border-white/10 lg:pl-6 pt-2"
+          >
              <div className="text-3xl font-light tracking-tight text-white mb-2">002</div>
              <div className="text-white/50 text-[14px] tracking-wide">diferenciais</div>
-          </div>
+          </motion.div>
           
           {/* Coluna 2 */}
-          <div className="flex-grow max-w-[700px] lg:border-l border-white/10 lg:pl-8 pt-2">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 25 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16,1,0.3,1] } } }}
+            className="flex-grow max-w-[700px] lg:border-l border-white/10 lg:pl-8 pt-2"
+          >
              <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-tighter font-medium text-[#eaeaea]">
                 Por que o Vendas Mais<br className="hidden md:block" /> é diferente de qualquer<br className="hidden md:block" /> outro CRM do mercado.
              </h2>
-          </div>
+          </motion.div>
 
           {/* Coluna 3 */}
-          <div className="lg:w-72 shrink-0 lg:border-l border-white/10 lg:pl-8 pt-2 self-start mt-8 lg:mt-0">
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16,1,0.3,1] } } }}
+            className="lg:w-72 shrink-0 lg:border-l border-white/10 lg:pl-8 pt-2 self-start mt-8 lg:mt-0"
+          >
             <p className="text-[#8b98a5] text-[15px] leading-relaxed">
                Não é mais uma ferramenta. É uma vantagem competitiva.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Accordion Container */}
         <div className="flex flex-col lg:flex-row w-full h-auto lg:h-[600px] gap-4 lg:gap-2">
@@ -121,16 +142,17 @@ export function Diferenciais() {
                           {col.desc}
                         </p>
                         
-                        <div className="mt-auto relative rounded-xl overflow-hidden h-48 lg:h-64 border border-white/10 bg-black/20">
+                        <div className="mt-auto mb-12 lg:mb-14 relative rounded-xl overflow-hidden h-44 lg:h-56 xl:h-60 border border-white/10 bg-black/20">
                            {col.visual === 'image' && col.img && (
                              <>
                                <img 
                                  src={col.img} 
                                  alt={col.title}
-                                 className="w-full h-full object-cover mix-blend-overlay opacity-80"
+                                 className="w-full h-full object-cover opacity-60"
+                                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                                />
                                {/* Gradient overlay */}
-                               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent mix-blend-overlay"></div>
+                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                              </>
                            )}
                            
