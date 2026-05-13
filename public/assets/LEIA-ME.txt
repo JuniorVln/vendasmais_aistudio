@@ -1,0 +1,4 @@
+Cole as suas imagens e logos aqui.
+No código, você pode referenciá-las usando o caminho `/assets/nome-do-arquivo.png`.
+
+Exemplo: Se você enviar `logo.png` para esta pasta, o caminho no código deve ser `/assets/logo.png`.
